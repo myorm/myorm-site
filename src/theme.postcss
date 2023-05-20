@@ -1,0 +1,98 @@
+
+:root {
+	/* =~= Theme Properties =~= */
+	--theme-font-family-base: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	--theme-font-family-heading: system-ui;
+	--theme-font-color-base: 0 0 0;
+	--theme-font-color-dark: 255 255 255;
+	--theme-rounded-base: 9999px;
+	--theme-rounded-container: 8px;
+	--theme-border-base: 1px;
+	/* =~= Theme On-X Colors =~= */
+	--on-primary: 255 255 255;
+	--on-secondary: 255 255 255;
+	--on-tertiary: 0 0 0;
+	--on-success: 0 0 0;
+	--on-warning: 0 0 0;
+	--on-error: 255 255 255;
+	--on-surface: 0 0 0;
+	/* =~= Theme Colors  =~= */
+	/* primary | #8a0000 */
+	--color-primary-50: 237 217 217; /* ⬅ #edd9d9 */
+	--color-primary-100: 232 204 204; /* ⬅ #e8cccc */
+	--color-primary-200: 226 191 191; /* ⬅ #e2bfbf */
+	--color-primary-300: 208 153 153; /* ⬅ #d09999 */
+	--color-primary-400: 173 77 77; /* ⬅ #ad4d4d */
+	--color-primary-500: 138 0 0; /* ⬅ #8a0000 */
+	--color-primary-600: 124 0 0; /* ⬅ #7c0000 */
+	--color-primary-700: 104 0 0; /* ⬅ #680000 */
+	--color-primary-800: 83 0 0; /* ⬅ #530000 */
+	--color-primary-900: 68 0 0; /* ⬅ #440000 */
+	/* secondary | #6f2a2a */
+	--color-secondary-50: 233 223 223; /* ⬅ #e9dfdf */
+	--color-secondary-100: 226 212 212; /* ⬅ #e2d4d4 */
+	--color-secondary-200: 219 202 202; /* ⬅ #dbcaca */
+	--color-secondary-300: 197 170 170; /* ⬅ #c5aaaa */
+	--color-secondary-400: 154 106 106; /* ⬅ #9a6a6a */
+	--color-secondary-500: 111 42 42; /* ⬅ #6f2a2a */
+	--color-secondary-600: 100 38 38; /* ⬅ #642626 */
+	--color-secondary-700: 83 32 32; /* ⬅ #532020 */
+	--color-secondary-800: 67 25 25; /* ⬅ #431919 */
+	--color-secondary-900: 54 21 21; /* ⬅ #361515 */
+	/* tertiary | #f48686 */
+	--color-tertiary-50: 253 237 237; /* ⬅ #fdeded */
+	--color-tertiary-100: 253 231 231; /* ⬅ #fde7e7 */
+	--color-tertiary-200: 252 225 225; /* ⬅ #fce1e1 */
+	--color-tertiary-300: 251 207 207; /* ⬅ #fbcfcf */
+	--color-tertiary-400: 247 170 170; /* ⬅ #f7aaaa */
+	--color-tertiary-500: 244 134 134; /* ⬅ #f48686 */
+	--color-tertiary-600: 220 121 121; /* ⬅ #dc7979 */
+	--color-tertiary-700: 183 101 101; /* ⬅ #b76565 */
+	--color-tertiary-800: 146 80 80; /* ⬅ #925050 */
+	--color-tertiary-900: 120 66 66; /* ⬅ #784242 */
+	/* success | #7dd100 */
+	--color-success-50: 236 248 217; /* ⬅ #ecf8d9 */
+	--color-success-100: 229 246 204; /* ⬅ #e5f6cc */
+	--color-success-200: 223 244 191; /* ⬅ #dff4bf */
+	--color-success-300: 203 237 153; /* ⬅ #cbed99 */
+	--color-success-400: 164 223 77; /* ⬅ #a4df4d */
+	--color-success-500: 125 209 0; /* ⬅ #7dd100 */
+	--color-success-600: 113 188 0; /* ⬅ #71bc00 */
+	--color-success-700: 94 157 0; /* ⬅ #5e9d00 */
+	--color-success-800: 75 125 0; /* ⬅ #4b7d00 */
+	--color-success-900: 61 102 0; /* ⬅ #3d6600 */
+	/* warning | #EAB308 */
+	--color-warning-50: 252 244 218; /* ⬅ #fcf4da */
+	--color-warning-100: 251 240 206; /* ⬅ #fbf0ce */
+	--color-warning-200: 250 236 193; /* ⬅ #faecc1 */
+	--color-warning-300: 247 225 156; /* ⬅ #f7e19c */
+	--color-warning-400: 240 202 82; /* ⬅ #f0ca52 */
+	--color-warning-500: 234 179 8; /* ⬅ #EAB308 */
+	--color-warning-600: 211 161 7; /* ⬅ #d3a107 */
+	--color-warning-700: 176 134 6; /* ⬅ #b08606 */
+	--color-warning-800: 140 107 5; /* ⬅ #8c6b05 */
+	--color-warning-900: 115 88 4; /* ⬅ #735804 */
+	/* error | #840101 */
+	--color-error-50: 237 217 217; /* ⬅ #edd9d9 */
+	--color-error-100: 230 204 204; /* ⬅ #e6cccc */
+	--color-error-200: 224 192 192; /* ⬅ #e0c0c0 */
+	--color-error-300: 206 153 153; /* ⬅ #ce9999 */
+	--color-error-400: 169 77 77; /* ⬅ #a94d4d */
+	--color-error-500: 132 1 1; /* ⬅ #840101 */
+	--color-error-600: 119 1 1; /* ⬅ #770101 */
+	--color-error-700: 99 1 1; /* ⬅ #630101 */
+	--color-error-800: 79 1 1; /* ⬅ #4f0101 */
+	--color-error-900: 65 0 0; /* ⬅ #410000 */
+	/* surface | #fdc9c9 */
+	--color-surface-50: 255 247 247; /* ⬅ #fff7f7 */
+	--color-surface-100: 255 244 244; /* ⬅ #fff4f4 */
+	--color-surface-200: 255 242 242; /* ⬅ #fff2f2 */
+	--color-surface-300: 254 233 233; /* ⬅ #fee9e9 */
+	--color-surface-400: 254 217 217; /* ⬅ #fed9d9 */
+	--color-surface-500: 253 201 201; /* ⬅ #fdc9c9 */
+	--color-surface-600: 228 181 181; /* ⬅ #e4b5b5 */
+	--color-surface-700: 190 151 151; /* ⬅ #be9797 */
+	--color-surface-800: 152 121 121; /* ⬅ #987979 */
+	--color-surface-900: 124 98 98; /* ⬅ #7c6262 */
+	
+}
