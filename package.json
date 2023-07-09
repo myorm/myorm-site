@@ -26,6 +26,12 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"highlight.js": "^11.8.0"
+		"@codemirror/lang-javascript": "^6.1.8",
+		"@codemirror/theme-one-dark": "^6.1.2",
+		"@myorm/myorm": "^0.3.7",
+		"codemirror": "^6.0.1",
+		"highlight.js": "^11.8.0",
+		"monaco-editor": "^0.38.0",
+		"svelte-codemirror-editor": "^1.1.0"
 	}
 }

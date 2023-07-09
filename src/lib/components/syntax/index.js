@@ -13,5 +13,6 @@ export const typeMap = writable({
     GroupByCallback: "#group-by-callback",
     AggregateFunctions: "#aggregate-functions",
     SortByCallback: "#sort-by-callback",
-    IncludeCallback: "#include-callback"
+    IncludeCallback: "#include-callback",
+    Chain: "#chain"
 });

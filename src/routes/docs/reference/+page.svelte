@@ -1,4 +1,5 @@
 <script>
+	import ThenInclude from './then-include.svelte';
 	import { sectionHistory } from './../../../lib/stores/section-history.js';
 	import { previousSection, nextSection, hasHistory, hasFuture, sectionHistoryIdx } from '$lib/stores/section-history.js';
     import ConstructorSyntax from "./constructor.svelte";
@@ -24,6 +25,8 @@
     import WithPrimary from './with-primary.svelte';
     import WithForeign from './with-foreign.svelte';
     import hljs from 'highlight.js';
+    import And from './and.svelte';
+    import Or from './or.svelte';
 
     let currentSection = "Configuration";
 
@@ -160,7 +163,7 @@ CREATE TABLE Album
 <section class="label" id="configuration">
     <h1 class="h1">Configuration</h1>
     <p>
-        All of the types used in this reference derives from the <a href="https://docs.yugabyte.com/preview/sample-data/chinook/">Chinook database</a>.
+        All of the types used in this reference derives from the <a class="underline" href="https://docs.yugabyte.com/preview/sample-data/chinook/">Chinook database</a>.
         Specifically, the types used are <code class="code">Track</code>, <code class="code">PlaylistTrack</code>, <code class="code">Playlist</code>, and <code class="code">Album</code>
     </p>
     <h3 class="h3 p-2">TypeScript</h3>
@@ -223,7 +226,7 @@ CREATE TABLE Album
         <Where/>
     </section>
     <hr>
-    <section id="where-not">
+    <section id="not-property-accessor">
         <WhereNot/>
     </section>
     <hr>
@@ -255,22 +258,31 @@ CREATE TABLE Album
         <Include/>
     </section>
     <hr>
-    <section id="then-include"><h3 class="h3">.thenInclude()</h3></section>
+    <section id="then-include">
+        <ThenInclude/>
+    </section>
     <hr>
 </section>
 
 <section class="label" id="filter-chains">
     <h1 class="h1">Filter Chains</h1>
-    <section id="and"><h2 class="h2">.and()</h2></section>
+    <p>
+        Filter chains can be applied to further chain or nest conditions within your query.
+    </p>
+    <section id="and">
+        <And/>
+    </section>
     <hr>
-    <section id="or"><h2 class="h2">.or()</h2></section>
+    <section id="or">
+        <Or/>
+    </section>
     <hr>
 </section>
 
 
 <section class="label" id="filter-conditions">
     <h1 class="h1">Filter Conditions</h1>
-    <section id="not"><h2 class="h2">.not()</h2></section>
+    <section id="not"><h2 class="h2">.not</h2></section>
     <hr>
     <section id="equals"><h2 class="h2">.equals()</h2></section>
     <hr>
@@ -296,12 +308,8 @@ CREATE TABLE Album
     <h1 class="h1">Aggregate Functions</h1>
 </section>
 
-<section class="label" id="explicit-transactions">
-    <h1 class="h1">Explicit Transactions</h1>
-</section>
-
-<section class="label" id="implicit-transactions">
-    <h1 class="h1">Implicit Transactions</h1>
+<section class="label" id="transaction-functions">
+    <h1 class="h1">Transaction Functions</h1>
 </section>
 
 <section class="label" id="event-handlers">

@@ -7,7 +7,7 @@
     const exampleCode = `import { MyORMContext } from "@myorm/myorm";
 // initialize connection with desired adapter as \`connection\`.
 const ctx: MyORMContext<Track> = new MyORMContext(connection, "Track"));
-ctx.groupBy(m => m.Composer)
+ctx.include
     .select();
     `;
 

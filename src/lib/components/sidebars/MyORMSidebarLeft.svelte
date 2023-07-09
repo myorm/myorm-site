@@ -43,7 +43,7 @@
         </svelte:fragment>
         <svelte:fragment slot="content">
             <ul>
-                <li class="px-2 hover:bg-secondary-500" class:bg-secondary-400={currentSection == "overview"}><a href="/docs#overview">Overview</a></li>
+                <li class="px-2 hover:bg-secondary-500" class:bg-secondary-400={currentSection == "overview"}><a href="/docs/overview">Overview</a></li>
                 <li class="px-2 hover:bg-secondary-500" class:bg-secondary-400={currentPage == "/docs/reference"}><a href="/docs/reference">Reference</a></li>
             </ul>
         </svelte:fragment>

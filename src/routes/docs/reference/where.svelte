@@ -43,7 +43,7 @@ ctx.where(m => m.TrackId.equals(20))
 
 <h2 class="h2">.where()</h2>
 <div class="p-4">
-    <Docs>
+    <Docs synonyms={["filter"]}>
         Apply filter conditions to your next transaction.
         <svelte:fragment slot="parameters">
             <Argument name="modelCallback" type="WhereCallback">

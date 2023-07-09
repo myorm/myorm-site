@@ -36,7 +36,7 @@
         </Tab>
         {/if}
         {#if sqlCode != null}
-        <Tab name="SQL">
+        <Tab name="MySQL">
             <CodeBlock language="sql" code={sqlCode} class="h-full" background="bg-secondary-filled"/>
         </Tab>
         {/if}

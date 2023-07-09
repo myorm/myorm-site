@@ -48,7 +48,9 @@
             /** @type {HTMLElement[]} */
             let sections = Array.from(document.querySelectorAll("section > h2"));
             const [section] = /** @type {HTMLElement[]} */ (sections.map(s => s.closest("section")).filter(s => s != null && s.offsetTop + s.offsetHeight - 90 > $appShellScrollY)); 
-            setSection(`#${section.id}`);
+            if(section) {
+                setSection(`#${section.id}`);
+            }
         }
     }
 </script>
@@ -109,9 +111,13 @@
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#where"}>
                     <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#where">.where()</a>
                 </li>
-                <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#where-not"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#where-not">.whereNot()</a>
-                </li>
+                <ul class="h-auto">
+                    <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#not-property-accessor"}>
+                        <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#not-property-accessor">
+                            <small>.not</small>
+                        </a>
+                    </li>
+                </ul>
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#limit"}>
                     <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#limit">.take()</a>
                 </li>
@@ -171,7 +177,7 @@
         <svelte:fragment slot="content">
             <ul class="h-auto">
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#not"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#not">.not()</a>
+                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#not">.not</a>
                 </li>
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#equals"}>
                     <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#equals">.equals()</a>
@@ -210,29 +216,29 @@
         <svelte:fragment slot="content">
             <ul class="h-auto">
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#avg"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#avg">.avg()</a>
+                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#avg">avg()</a>
                 </li>
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#count"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#count">.count()</a>
+                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#count">count()</a>
                 </li>
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#min"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#min">.min()</a>
+                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#min">min()</a>
                 </li>
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#max"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#max">.max()</a>
+                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#max">max()</a>
                 </li>
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#sum"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#sum">.sum()</a>
+                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#sum">sum()</a>
                 </li>
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#total"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#total">.total()</a>
+                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#total">total()</a>
                 </li>
             </ul>
         </svelte:fragment>
     </AccordionItem>
     <AccordionItem bind:open={accordionItemOpenStates.explicitTransactions}>
         <svelte:fragment slot="summary">
-            <medium class="px-2 py-1">Explicit Transactions</medium>
+            <medium class="px-2 py-1">Transactional Functions</medium>
         </svelte:fragment>
         <svelte:fragment slot="content">
             <ul class="h-auto">
@@ -242,29 +248,14 @@
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#count"}>
                     <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#count">&lt;async&gt; .count()</a>
                 </li>
-                <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#update-select"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#update-select">&lt;async&gt; .updateSelect()</a>
-                </li>
-                <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#delete-select"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#delete-select">&lt;async&gt; .deleteSelect()</a>
-                </li>
-            </ul>
-        </svelte:fragment>
-    </AccordionItem>
-    <AccordionItem bind:open={accordionItemOpenStates.implicitTransactions}>
-    <svelte:fragment slot="summary">
-            <medium class="px-2 py-1">Implicit Transactions</medium>
-        </svelte:fragment>
-        <svelte:fragment slot="content">
-            <ul class="h-auto">
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#insert"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#insert">&lt;async&gt; .insert()</a>
+                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#update-select">&lt;async&gt; .insert()</a>
                 </li>
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#update"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#update">&lt;async&gt; .update()</a>
+                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#delete-select">&lt;async&gt; .update()</a>
                 </li>
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#delete"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#delete">&lt;async&gt; .delete()</a>
+                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#delete-select">&lt;async&gt; .update()</a>
                 </li>
             </ul>
         </svelte:fragment>
@@ -278,32 +269,8 @@
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#on-success"}>
                     <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#on-success">.onSuccess()</a>
                 </li>
-                <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#on-query-success"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#on-query-success">.onQuerySuccess()</a>
-                </li>
-                <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#on-insert-success"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#on-insert-success">.onInsertSuccess()</a>
-                </li>
-                <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#on-update-success"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#on-update-success">.onUpdateSuccess()</a>
-                </li>
-                <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#on-delete-success"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#on-delete-success">.onDeleteSuccess()</a>
-                </li>
                 <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#on-fail"}>
                     <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#on-fail">.onFail()</a>
-                </li>
-                <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#on-query-fail"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#on-query-fail">.onQueryFail()</a>
-                </li>
-                <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#on-insert-success"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#on-insert-fail">.onInsertFail()</a>
-                </li>
-                <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#on-update-success"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#on-update-fail">.onUpdateFail()</a>
-                </li>
-                <li class="px-1 hover:bg-tertiary-hover-token" class:border-l-4={$currentSection == "#on-delete-success"}>
-                    <a on:click|preventDefault={scrollIntoView} class="px-1 hover:bg-tertiary-hover-token" href="#on-delete-fail">.onDeleteFail()</a>
                 </li>
             </ul>
         </svelte:fragment>

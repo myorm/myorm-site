@@ -2,11 +2,12 @@
 	import ScrollIntoViewAnchor from '$lib/components/buttons/ScrollIntoViewAnchor.svelte';
     import { Argument, ReturnType, Docs } from "$lib/components/syntax";
     import DocsExample from "$lib/components/syntax/DocsExample.svelte";
+    import DocsExtra from '$lib/components/syntax/DocsExtra.svelte';
 
     const exampleCode = `import { MyORMContext } from "@myorm/myorm";
 // initialize connection with desired adapter as \`connection\`.
 const ctx: MyORMContext<Track> = new MyORMContext(connection, "Track"));
-ctx.whereNot(m => m.TrackId.equals(20))
+ctx.where(m => m.TrackId.equals(20))
     .select();`;
 
     const sqlCode = ``;
@@ -14,7 +15,7 @@ ctx.whereNot(m => m.TrackId.equals(20))
     const chainingExampleCode = `import { MyORMContext } from "@myorm/myorm";
 // initialize connection with desired adapter as \`connection\`.
 const ctx: MyORMContext<Track> = new MyORMContext(connection, "Track"));
-ctx.not.where(m => m.TrackId.equals(20)
+ctx.where(m => m.TrackId.equals(20)
     .and(m => m.Composer.equals("AC/DC"))
     .or(m => m.Name.equals("Dog Eat Dog")))
     .select();`;
@@ -24,7 +25,7 @@ ctx.not.where(m => m.TrackId.equals(20)
     const nestingExampleCode = `import { MyORMContext } from "@myorm/myorm";
 // initialize connection with desired adapter as \`connection\`.
 const ctx: MyORMContext<Track> = new MyORMContext(connection, "Track"));
-ctx.not.where(m => m.TrackId.equals(20)
+ctx.where(m => m.TrackId.equals(20)
     .and(m => m.Composer.equals("AC/DC")
         .or(m => m.Name.equals("Dog Eat Dog"))))
     .select();`;
@@ -34,20 +35,26 @@ ctx.not.where(m => m.TrackId.equals(20)
     const sequentialExampleCode = `import { MyORMContext } from "@myorm/myorm";
 // initialize connection with desired adapter as \`connection\`.
 const ctx: MyORMContext<Track> = new MyORMContext(connection, "Track"));
-ctx.not.where(m => m.TrackId.equals(20))
+ctx.where(m => m.TrackId.equals(20))
     .where(m => m.Name.equals("AC/DC"))
     .select();`;
 
     const sequentialSqlCode = ``;
+
 </script>
 
-<h2 class="h2">.not (property accessor)</h2>
+<h2 class="h2">.and()</h2>
 <div class="p-4">
-    <Docs>
-        Negate the state's built filter conditions.
+    <Docs {exampleCode} {sqlCode}>
+        Chain a condition in parallel onto the filter for the command.
+        <svelte:fragment slot="parameters">
+            <Argument name="modelCallback" type="WhereCallback">
+                A callback to determine the filter to chain/nest. The callback uses the <code class="code">model</code> parameter to get reference to the properties being filtered on.
+            </Argument>
+        </svelte:fragment>
         <svelte:fragment slot="returns">
-            <ReturnType type="MyORMContext">
-                A reference to the same <code class="code">MyORMContext</code> with a new state that negates any filter condition. (condition can be past or applied in the future).
+            <ReturnType type="Chain">
+                A <code class="code">Chain</code> object, containing the same <code class="code">.or()</code> and <code class="code">.and()</code> functions that can be used to continue chaining or nesting more conditions.    
             </ReturnType>
         </svelte:fragment>
         <svelte:fragment slot="extra">
@@ -78,11 +85,9 @@ ctx.not.where(m => m.TrackId.equals(20))
                     <small class="italic">case insensitive</small>
                 </svelte:fragment>
             </DocsExample>
-            <DocsExample exampleCode={chainingExampleCode} sqlCode={chainingSqlCode}>
+            <DocsExample>
                 After applying your desired filter condition, the return type of that is another object containing various <ScrollIntoViewAnchor href="#filter-chains" label="Filter Chain Functions"/>,
                 which can be used to apply additional conditions to your query.
-                <br>
-                The chaining functions
                 <svelte:fragment slot="functions">
                     <ScrollIntoViewAnchor isCode href="#and" label=".and()"/>: Applies a condition in sequence on to the condition added this call comes from.
                     <br>
